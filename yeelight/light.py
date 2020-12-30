@@ -714,7 +714,7 @@ class YeelightGenericLight(YeelightEntity, LightEntity):
         self.device.turn_on(
             duration=duration,
             light_type=self.light_type,
-            power_mode=self._turn_on_power_mode,
+            power_mode=PowerMode.LAST if self.is_on else self._turn_on_power_mode,
         )
 
         if self.config[CONF_MODE_MUSIC] and not self._bulb.music_mode:
